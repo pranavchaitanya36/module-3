@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract Bullet_token is ERC20 {
+    address public addressee;
+
+    constructor(
+        string memory TKname,
+        string memory TKcode,
+        uint8 decimalPlaces,
+        uint256 TKsum
+    ) ERC20(TKname, TKcode) {
+        _mint(msg.sender, TKsum * (10**decimalPlaces));
+        addressee = msg.sender;
+    }
+
+    function Mint_TK(address Addressee, uint256 count) public {
+        require(msg.sender == addressee, "Only the Addressee can issue tokens.");
+        _mint(Addressee, count);
+    }
+
+    function Burn_TK(uint256 count) public {
+        _burn(msg.sender, count);
+    }
+
+    function transfer_TK(address donee, uint256 count) public returns (bool) {
+        _transfer(msg.sender, donee, count);
+        return true;
+    }
+}
