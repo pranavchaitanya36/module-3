@@ -60,3 +60,9 @@ Transfers a specified number of BTK tokens from the caller's address to the spec
 
 - OpenZeppelin for the ERC-20 token implementation.
 
+## Author 
+
+Pranav Chaitanya 
+
+craj0314@gmail.com
+
